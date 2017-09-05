@@ -220,11 +220,13 @@ class MainApp ( wx.Frame ):
 			self.s1-=int(self.summ_text.Value)
 			self.C_sum.SetLabel(str(self.s1))
 			main.delselected(self.C_list.StringSelection)
+			main.downmas()
 			self.C_list.Delete(self.C_list.GetSelection())
 		if self.operate == 2:
 			self.s2-=int(self.summ_text.Value)
 			self.D_sum.SetLabel(str(self.s2))
 			main.delselected(self.D_list.StringSelection)
+			main.downmas()
 			self.D_list.Delete(self.D_list.GetSelection())
 
 
