@@ -217,9 +217,13 @@ class MainApp ( wx.Frame ):
 		
 	def delete_item( self, event ):
 		if self.operate == 1:
+			self.s1-=int(self.summ_text.Value)
+			self.C_sum.SetLabel(str(self.s1))
 			main.delselected(self.C_list.StringSelection)
 			self.C_list.Delete(self.C_list.GetSelection())
 		if self.operate == 2:
+			self.s2-=int(self.summ_text.Value)
+			self.D_sum.SetLabel(str(self.s2))
 			main.delselected(self.D_list.StringSelection)
 			self.D_list.Delete(self.D_list.GetSelection())
 
@@ -359,7 +363,7 @@ class NewTask ( wx.Frame ):
 			
 			app.D_list.Append(self.newitem[0])
 			app.s2+=int(self.newitem[4])
-			app.C_sum.SetLabel(str(app.s2))
+			app.D_sum.SetLabel(str(app.s2))
 		
 		
 		self.Close()
