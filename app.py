@@ -20,6 +20,8 @@ class MainApp ( wx.Frame ):
 	def __init__( self, parent ):
 		self.operate = 0
 		main.mas = main.upmas()
+		
+		
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"PyDC", pos = wx.DefaultPosition, size = wx.Size( 500,348 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 		
 		self.SetSizeHintsSz( wx.Size( 500,-1 ), wx.DefaultSize )
@@ -83,10 +85,23 @@ class MainApp ( wx.Frame ):
 		self.C_sum.Wrap( -1 )
 		gSizer9.Add( self.C_sum, 0, wx.ALL, 5 )
 		
+		self.m_staticText28 = wx.StaticText( self, wx.ID_ANY, u"Профит", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText28.Wrap( -1 )
+		gSizer9.Add( self.m_staticText28, 0, wx.ALL, 5 )
+		
+		
+		self.profit = 0
+		
+		
+		self.P_sum = wx.StaticText( self, wx.ID_ANY, str(self.profit), wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.P_sum.Wrap( -1 )
+		gSizer9.Add( self.P_sum, 0, wx.ALL, 5 )
 		
 				
 		
 		fgSizer5.Add( gSizer9, 1, wx.EXPAND, 5 )
+		
+		
 		
 		gSizer7 = wx.GridSizer( 0, 2, 0, 0 )
 		
@@ -106,6 +121,8 @@ class MainApp ( wx.Frame ):
 		self.D_sum.Wrap( -1 )
 		gSizer7.Add( self.D_sum, 0, wx.ALL, 5 )
 		
+		self.profit = self.s2-self.s1
+		self.P_sum.SetLabel(str(self.profit))
 		
 		fgSizer5.Add( gSizer7, 1, wx.EXPAND, 5 )
 		
@@ -228,8 +245,8 @@ class MainApp ( wx.Frame ):
 			main.delselected(self.D_list.StringSelection)
 			main.downmas()
 			self.D_list.Delete(self.D_list.GetSelection())
-
-
+			
+		self.D_sum.SetLabel(str(self.s2-self.s1))
 
 class NewTask ( wx.Frame ):
 	
@@ -367,6 +384,7 @@ class NewTask ( wx.Frame ):
 			app.s2+=int(self.newitem[4])
 			app.D_sum.SetLabel(str(app.s2))
 		
+		app.D_sum.SetLabel(str(app.s2-app.s1))
 		
 		self.Close()
 		
